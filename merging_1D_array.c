@@ -2,33 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int* mergeArrays(int arr1[], int n1, int arr2[],int n2) {
-  
-  	// Allocating array for storing result
-  	int *res = (int *)malloc((n1 + n2) * sizeof(int));
-  
-    // Copy elements of the first array to the result array
-    for (int i = 0; i < n1; i++)
-        res[i] = arr1[i];
+int main()
+{
+    int mergeArr[100];
+    int i, n1, n2;
+    n1 = 5; // Size of first array
+    n2 = 5; // Size of second array
+    int arr1[50] = {1,2,3,4,5};
+    int arr2[50] = {5,6,7,8,9,10};
+    int res = 0;
 
-    // Copy elements of the second array to the result array
-    for (int i = 0; i < n2; i++)
-        res[n1 + i] = arr2[i];
-  
-  	return res;
-}
+    // Merging two arrays
+    for(i=0;i<n1;i++){
+        mergeArr[i] = arr1[i];
 
-int main() {
-    int arr1[] = {1, 3, 5};
-    int n1 = sizeof(arr1) / sizeof(arr1[0]);
-    int arr2[] = {2, 4, 6};
-    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    }
+    for(i=0;i<n2;i++){
+        mergeArr[n1+i]=arr2[i];
 
-    // Merge the two arrays
-    int *res = mergeArrays(arr1, n1, arr2, n2);
-    
-    for (int i = 0; i < n1 + n2; i++)
-        printf("%d ", res[i]);
+    }
 
+    printf("Merged array: \n");
+    for(i=0;i<n1+n2;i++){
+        printf("%d ",mergeArr[i]);
+    }
     return 0;
+
+
 }
