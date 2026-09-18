@@ -45,10 +45,9 @@ int main() {
             }
 
         }
-    
     //Now traverse the doubly linked list 
 
-    printf("Doubly Linked List --> \n");
+    printf("Before Insertion Doubly Linked List --> \n");
     
     temp = head;
 
@@ -59,7 +58,45 @@ int main() {
 
     printf("NULL\n");
     
-        
 
+    //Now insertion at the begin
+    int first_val;
+    printf("\nEnter value to insertion at the begin :");
+    scanf("%d",&first_val);
+    
+    struct node * first = (struct node*)malloc(sizeof(struct node));
+    first->data = first_val;
+    first->prev = NULL;
+    first->next = NULL;
+
+
+    if(head==NULL)
+    {
+        head = first;
+    }
+    else{
+    temp = head;
+    temp->prev = first;
+    first->next = temp;
+    head = first;
+    }
+    
+    printf("After Insertion Doubly Linked List --> \n");
+    
+    temp = head;
+
+    while(temp != NULL){
+        printf("%d->",temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+
+
+
+
+    
+
+    
     return 0;
 }
