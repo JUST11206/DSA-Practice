@@ -9,32 +9,34 @@ struct node {
 
 int main()
 {
-    struct node * firstNode = malloc(sizeof(struct node));
-    struct node * secondNode = malloc(sizeof(struct node));
-    struct node * thirdNode = malloc(sizeof(struct node));
-
-    //data filled
-
-    firstNode->data = 100;
-    secondNode->data = 200;
-    thirdNode->data = 300;
-
-    //connect each other
-
-    firstNode->next = secondNode;
-    secondNode->next = thirdNode;
-    thirdNode->next = NULL;
     
-
-    //intialize the pointer
+    int n,val;
     struct node * head=NULL;
     struct node*temp,*del;
+    
+    printf("Enter number of nodes :");
+    scanf("%d",&n);
 
-    //head pointer is point to firstNode
-    head = firstNode;
+        for(int i=0;i<n;i++){
+            printf("Enter value %d :",i+1);
+            scanf("%d",&val);
 
-    //print
-    printf("Before deletion Singly Linked List :\n");
+        struct node * newNode = malloc(sizeof(struct node));
+        newNode->data = val;
+        newNode->next = NULL;
+
+        if(head == NULL){
+            head = newNode;
+        }
+        else{
+            temp = head;
+            while(temp->next != NULL){
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+
     temp = head;
     while(temp != NULL)
         {
@@ -69,7 +71,7 @@ int main()
             
         
     }
-        printf("After deletion last node Singly Linked List :\n");
+    
      temp = head;
     while(temp != NULL)
         {
@@ -78,7 +80,6 @@ int main()
         }
     printf("NULL");
 
-
+    return 0;
+    
 }
-
-
