@@ -12,29 +12,41 @@ struct node {
 int main() {
     // Write C code here
 
-    struct node * first = (struct node *)malloc (sizeof(struct node));
-    struct node * second = (struct node* )malloc (sizeof(struct node));
+     
+    int n,item;
+    struct node* head = NULL;
+    struct node* temp;
+    printf("Enter No of Nodes :");
+    scanf("%d",&n);
 
-    struct node * third = (struct node *)malloc (sizeof(struct node));
-    
-    first->data=10;
-    second->data=20;
-    third->data=30;
+    for(int i=0;i<n;i++)
+        {
+            printf("Enter value %d :",i+1);
+            scanf("%d",&item);
+            
+            struct node * newNode = (struct node *)malloc(sizeof(struct node));
+            newNode->data = item;
+            newNode->prev = NULL;
+            newNode->next = NULL;
 
-    first->prev = NULL;
-    second->prev = first;
-    third->prev = second;
-    
-    first->next=second;
-    second->next=third;
-    third->next=NULL;
+
+            if(head == NULL)
+            {
+                head = newNode;
+            }
+            else{
+                temp = head;
+                 while(temp->next != NULL)
+                    {
+                        temp = temp->next;
+                    }
+                
+                temp->next = newNode;
+            }
+
+        }
     
     //Now traverse the doubly linked list 
-
-    struct node * temp;
-    struct node * head = NULL;
-
-    head = first;
 
     printf("Doubly Linked List --> \n");
     
