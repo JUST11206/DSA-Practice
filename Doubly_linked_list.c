@@ -81,7 +81,7 @@ int main() {
     head = first;
     }
     
-    printf("After Insertion Doubly Linked List --> \n");
+    printf("After Insertion at Begin Doubly Linked List --> \n");
     
     temp = head;
 
@@ -94,6 +94,45 @@ int main() {
 
 
 
+    //insertion at the last 
+
+    int last_val;
+    printf("Enter value to insertion at the  Last :");
+    scanf("%d",&last_val);
+
+    struct node *last = (struct node*)malloc(sizeof(struct node));
+    last->data = last_val;
+    last->prev = NULL;
+    last->next = NULL;
+
+    if(head == NULL){
+        head = last;
+    }
+
+    else{
+        temp = head;
+        while(temp->next != NULL )
+            {
+                temp = temp->next;
+            }
+        temp->next = last;
+    }
+
+    
+
+
+    printf("After Insertion at last  Doubly Linked List --> \n");
+    
+    temp = head;
+
+    while(temp != NULL){
+        printf("%d->",temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+
+    
 
     
 
