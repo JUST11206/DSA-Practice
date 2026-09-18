@@ -28,17 +28,26 @@ int main() {
     first->next=second;
     second->next=third;
     third->next=NULL;
-
-    printf("Doubly Linked list\n");
-    printf("%d ",first->data);
-    printf("%d " ,second->data);
-    printf("%d " ,third->data);
-
     
+    //Now traverse the doubly linked list 
+
+    struct node * temp;
+    struct node * head = NULL;
+
+    head = first;
+
+    printf("Doubly Linked List --> \n");
     
+    temp = head;
+
+    while(temp != NULL){
+        printf("%d->",temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
     
         
-    
-    
+
     return 0;
 }
