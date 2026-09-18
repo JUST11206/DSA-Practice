@@ -36,7 +36,7 @@ int main()
             temp->next = newNode;
         }
     }
-
+printf("\nSingly Linked List \n");
     temp = head;
     while(temp != NULL)
         {
@@ -45,41 +45,40 @@ int main()
         }
     printf("NULL\n");
 
+//Now deletion at specific location 
 
-    //Now deletion at the last node in singly linked list
+    int pos;
+    printf("\nEnter position to delete :");
+    scanf("%d",&pos);
 
-    if(head == NULL){
-        printf("Empty Linked list!");
-    }
 
-        if(head->next == NULL) { //only one node
-
-            free(head);
-        }
-        else{
-            temp = head;
-    while(temp->next->next != NULL)  //for reaching last-1 nodes
-        {
-            temp = temp->next;
-        }
-     //now arrange last-1 node 
-            del = temp->next;
-            temp->next = NULL;
-            free(del); //or taking one more pointer *ptr 
-
+    if(pos == 1){
+        del = head;
+        head = head->next;
+        free(del);
             
-            
-        
     }
     
-     temp = head;
+    temp = head;
+    for(int i=0;i<pos-1-1 && temp !=NULL;i++){
+        temp = temp->next;    
+    }
+
+    // printf("\n %d",temp->data);  //temp == pos , Let suppose pos is 2 
+    //arrange 
+    del = temp->next; // 3
+    temp->next = del->next;
+    free(del);
+
+printf("\nAfter deletion linked List ");
+ temp = head;
     while(temp != NULL)
         {
             printf("%d->",temp->data);
             temp = temp->next;
         }
     printf("NULL");
-
+    
     return 0;
     
 }
