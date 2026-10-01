@@ -1,41 +1,65 @@
+// Online C compiler (editor)
+// Write and run C online using this editor.
+
 #include <stdio.h>
 
 int main() {
 
-    int stack[5],n=0,item;
+    int stack[100];
     int top = -1;
+    //push operation
 
-    // PUSH
-    while(n<3){
-        printf("Enter the value: ");
-        scanf("%d",&item);
+    int operation,value;
+    char confirm;
+
+    while(operation <= 3){
+    printf("Welcome to stack program \n");
+    printf("1. PUSH\n");
+    printf("2. POP\n");
+    printf("3. Display\n");    
+    printf("Enter operation to perform :");    
+    scanf("%d",&operation);
+    if(operation == 1){
+        if (top >= 99) {
+            printf("Stack Overflow! Cannot push more elements.\n");
+        }
+            else{
+        printf("Enter value to insert :");
+        scanf("%d",&value);
         top++;
-        stack[top]=item;
-        n++;
+        stack[top]=value;
+        printf("ELements Added Successfully\n");
+        }
     }
+    else if (operation == 2) {
+    if (top < 0) {
+        printf("Stack Underflow! No elements to delete.\n");
+    } else {
+        printf("Are you sure you want to delete element?\nEnter y/n: ");
+        scanf(" %c", &confirm); // Fixed: %c for char
 
-    // DISPLAY
-    printf("Stack elements are:\n");
-
-    for(int i = top; i >= 0; i--) {
-        printf("%d\n", stack[i]);
+        if (confirm == 'y' || confirm == 'Y') { // Fixed: single quotes for char
+            
+            top--;
+            printf("Element deleted successfully!\n");
+        } else {
+            printf("Element not deleted.\n");
+        }
     }
-
-
-    if(top == -1){
-        printf("Underflow !");
-    }
-
+}
+     else if(operation == 3){
+             printf("Display ALL Elements \n");
+         for(int i=top;i>=0;i--){
+             printf("%d",stack[i]);
+             
+             printf("\n");
+         }
+     }   
     else{
-        top--; //1
+        printf("Something wrong !");
+        break;
     }
-
-    // DISPLAY
-    printf("Stack elements are:\n");
-
-    for(int i = top; i >= 0; i--) {
-        printf("%d\n", stack[i]);
     }
-    
+  
     return 0;
 }
