@@ -1,11 +1,15 @@
+// Online C compiler (editor)
+// Write and run C online using this editor.
+
 #include <stdio.h>
 #include <stdlib.h>
 
 struct node {
     int data;
-    struct node *next;
+    struct node * next;
 };
 
+//create function() to create n number of linked list 
 struct node *createLL(int n){
     int value;
     struct node *head = NULL; // Fixed: head must be a pointer
@@ -38,63 +42,36 @@ struct node *createLL(int n){
     return head;
 }
 
+void deleteLL(struct node *head){
+    struct node * temp = head;
+    while(temp != NULL){
+        temp = temp->next;
+    }
+    free(temp);
+}
+
+
 
 void display(struct node *head){
     struct node *temp = head;
-    while(temp != NULL){
+    while(temp->next != NULL){
         printf("%d->",temp->data);
         temp = temp->next;
     }
     printf("NULL\n");
 }
 
-
-void deleteLL(struct node *head,int pos){
-    struct node *temp = head;
-    struct node *del;
-
-    if(head == NULL)
-    {
-        printf("Underflow!\n");
-        exit(0);
-    }
-
-    if(pos == 1){
-        del = head;
-        head = head->next;
-        free(del);
-    }
-    else{
-        int i =0;
-        
-    while(temp->next != NULL && i < pos-1 )
-        {
-            temp = temp->next;
-            i++;
-        }
-
-        del = temp->next;
-        temp->next = del->next;
-        free(del);
-}
-
-}
-
 int main() {
-    printf("Welcome to first create LL function !\n");
-    int n,pos;
-    printf("Enter how many nodes you want to create: ");
-    scanf("%d", &n);
-    // Function calling
+    int n;
+    printf("Program is Live.....\n");
+    printf("Enter number of nodes to create :");
+    scanf("%d",&n);
     struct node *head = createLL(n);
     printf("Linked List :");
     display(head);
-
-    printf("Enter position :");
-    scanf("%d",&pos);
-    deleteLL(head,pos);
-    
-    printf("Linked List After :");
+    deleteLL(head);
+    printf("Delete last node :");
     display(head);
+    
     return 0;
 }
