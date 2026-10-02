@@ -12,7 +12,7 @@ struct node {
 //create function() to create n number of linked list 
 struct node *createLL(int n){
     int value;
-    struct node *head = NULL; // Fixed: head must be a pointer
+    struct node *head = NULL;
     struct node *temp = NULL;
 
     for (int i = 0; i < n; i++) {
@@ -24,19 +24,17 @@ struct node *createLL(int n){
         }
         printf("Enter value for node %d: ", i + 1);
         scanf("%d", &value);
-        // Data and next pointer should be assigned for EVERY new node
         newNode->data = value;
         newNode->next = NULL;
 
         if (head == NULL) {
-            head = newNode; // If list is empty, make this the head
+            head = newNode;
         } else {
-            // Otherwise, traverse to the last node
             temp = head;
             while (temp->next != NULL) {
                 temp = temp->next;
             }
-            temp->next = newNode; // Attach the new node at the end
+            temp->next = newNode;
         }
     }
     return head;
