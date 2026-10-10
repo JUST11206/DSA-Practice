@@ -40,7 +40,7 @@ void dequeueCir(){
 //display
 void display(){
   if(front == -1){
-    printf("Underflow!");
+    printf("Empty Array!");
     return;
   }
   else{
