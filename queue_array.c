@@ -62,3 +62,85 @@ int main() {
   
     return 0;
 }
+
+
+
+//New Code 
+//10-oct-2026
+//This is a simple Queue program insertion and deletion in C
+
+#include <stdio.h>
+#include <stdlib.h>
+#define size 100
+int arr[size];
+int front = -1;
+int rear = -1;
+
+//Enqueue
+//insertion at the end using array
+void insertQueue(int value){
+  if(rear == size-1){
+    printf("Overflow !\n");
+  }
+  //edge cases
+  else if(front == -1 && rear == -1){
+    front = 0;
+    rear = 0;
+    arr[rear] = value;
+  }
+  else if(front == rear){
+    rear++;
+    arr[rear] = value;
+  }
+  else{
+  rear++;
+  arr[rear] = value;
+
+}}
+
+
+//Dequeue
+//Deletion at the first using array
+
+void delQueue(int arr[]){
+  if(front == -1){
+    printf("Underflow !\n");
+  }
+  else if(front == rear){
+    front--;
+    rear--;
+  }
+  else{
+    front = front + 1;
+  }
+}
+
+
+void main(){
+  int value,n;
+
+
+  
+  printf("Enter Number of items :");
+  scanf("%d",&n);
+  
+  for(int i=0;i<n;i++){
+  printf("Enter value :");
+  scanf("%d",&value);
+    arr[i]=value;
+  insertQueue(value);
+  }
+
+  printf("Array :");
+  for(int i=front;i<=rear;i++){
+    printf("%d ",arr[i]);
+  }
+
+//delete
+  delQueue(arr);
+  printf("After Dequeue !\n");
+  for(int i=front;i<=rear;i++){
+    printf("%d ",arr[i]);
+  }
+  
+}
